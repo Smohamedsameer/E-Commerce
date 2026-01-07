@@ -226,9 +226,11 @@
 var Main_Img=getElementById("mainimg");
 var small=getElementByClassName("small-img")
 
- small.onclick(){
-       Main_Img.src=small[0].src;
-}
+  for (let i = 0; i < small.length; i++) {
+    small[i].onclick = function () {
+      Main_Img.src = small[i].src;
+    };
+  }
   </script>
   <script src="script.js"></script>
 </body>
