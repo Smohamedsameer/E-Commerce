@@ -10,6 +10,9 @@
 <body>
     <section id="header">
   <h1 id="logo" alt="">E-COMMERCE</h1>
+    <button class="back-btn" onclick="window.location.href='shop.html'">
+    <i class="fas fa-arrow-left"></i>
+  </button>
  <div>   <ul id="navbar">
   <li><a href="index.html">Home</a>   </li>
   <li><a class="active" href="shop.html">Shop</a></li>
@@ -24,7 +27,14 @@
   <section id="prodetails" class="section-p1">
     <div class="single-pro-image">
         <img src="img/prod8.jpg" width="100%" id="mainimg" alt="">
+            <script>
+    const params = new URLSearchParams(window.location.search);
+    const imgSrc = params.get("img");
 
+    if (imgSrc) {
+      document.getElementById("mainimg").src = imgSrc;
+    }
+  </script>
         <div class="small-img-group">
             <div class="small-img-col">
                 <img src="img/prod8.jpg" width="100%" class="small-img" alt="">
@@ -223,14 +233,22 @@
   </section>
 
   <script>
-var Main_Img=getElementById("mainimg");
-var small=getElementByClassName("small-img")
+var Main_Img=document.getElementById("mainimg");
+var small=document.getElementsByClassName("small-img")
 
-  for (let i = 0; i < small.length; i++) {
-    small[i].onclick = function () {
-      Main_Img.src = small[i].src;
-    };
-  }
+ small[0].onclick = function(){
+  Main_Img.src = small[0].src;
+ }
+  small[1].onclick = function(){
+  Main_Img.src = small[1].src;
+ }
+  small[2].onclick = function(){
+  Main_Img.src = small[2].src;
+ }
+  small[3].onclick = function(){
+  Main_Img.src = small[3].src;
+ }
+
   </script>
   <script src="script.js"></script>
 </body>
