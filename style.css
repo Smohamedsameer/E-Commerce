@@ -9,6 +9,7 @@ button.normal{
     outline: none;
     transition: 0.2s ;
     width: fit-content;
+    
 }
 button.white{
      font-size: 14px;
@@ -146,6 +147,7 @@ body {
 }
 .section-m1{
     margin: 40px 0;
+    text-align: center;
 }
 #feature{
    display: flex;
@@ -682,6 +684,7 @@ img {
   height: auto;
 }
 
+
 /* mobile responsive */
 @media (max-width: 799px) {
   #header {
@@ -999,6 +1002,15 @@ font-size: large;
 .about-btn:hover {
   background: #1e293b;
 }
+#video{
+  width: 700px;
+  height: 500px;
+  align-items: center;
+  margin-left: 25%;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 5px black;
+}
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
@@ -1016,5 +1028,126 @@ font-size: large;
 
   .about-text h2 {
     font-size: 32px;
+  }
+  #about-hero{
+    height: 150px;
+  }
+}
+@media (max-width:950px){
+  #video{
+    text-align: center;
+    width: 500px;
+    margin-left: 20%;
+  }
+}
+@media (max-width:650px){
+  #video{
+    text-align: center;
+    width: 350px;
+    margin-left:18% ;
+  }
+}
+@media (max-width:370px){
+  #video{
+    text-align: center;
+    width: 300px;
+    margin-left:10% ;
+  }
+}
+
+/* contact style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== BANNER ===== */
+.contact-banner {
+  height: 20vh;
+  background: url("https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1200&q=80")
+    center/cover no-repeat;
+  position: relative;
+}
+
+.contact-banner .overlay {
+  height: 100%;
+  background: rgba(35, 40, 60, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+
+.contact-banner h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.contact-banner p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+  display: flex;
+  gap: 40px;
+  padding: 60px 80px;
+}
+
+.contact-left {
+  flex: 1;
+}
+
+.contact-left span {
+  color: #088178;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.contact-left h2 {
+  font-size: 32px;
+  margin: 15px 0;
+}
+
+.contact-left h3 {
+  margin: 20px 0 10px;
+}
+
+.contact-left ul {
+  list-style: none;
+}
+
+.contact-left li {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #444;
+}
+
+/* ===== MAP ===== */
+.contact-right {
+  flex: 1;
+}
+
+.contact-right iframe {
+  width: 100%;
+  height: 350px;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .contact-section {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .contact-banner h1 {
+    font-size: 34px;
   }
 }
