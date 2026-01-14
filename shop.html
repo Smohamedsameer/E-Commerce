@@ -474,3 +474,23 @@
 
 </body>
 </html>
+
+
+  
+    <script>
+  document.querySelectorAll(".read-more").forEach(btn => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const fullText = this.previousElementSibling;
+      fullText.style.display =
+        fullText.style.display === "block" ? "none" : "block";
+
+      this.innerText =
+        fullText.style.display === "block"
+          ? "READ LESS ←"
+          : "CONTINUE READING →";
+    });
+  });
+
+  </script>

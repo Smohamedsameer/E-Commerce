@@ -274,6 +274,11 @@ padding: 6px 10px;
     width:fit-content;
      margin-left: 45.5%;
 }
+@media (max-width:800px){
+  .section-m1 button{
+    margin-left: 37%;
+  }
+}
 #banner h4{
     color: white;
     font-size: 16px;
@@ -500,13 +505,18 @@ footer a:hover{
     background-color: #031733;
     height: fit-content;
 }
-#newsletter2 h1,p{
+#newsletter2 h1{
     color: rgb(0, 0, 0);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 600;
     text-shadow:  1px 1px 2px rgb(255, 255, 255),  
         -1px -1px 2px rgb(255, 255, 255);
      background-color: #04183400;
+}
+#newsletter2 p{
+    color: rgb(0, 0, 0);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
 }
 #pagination{
     text-align: center;
@@ -713,6 +723,7 @@ img {
     padding: 10px;
   }
 }
+
 /* shop/index.html */
 @media (max-width: 1200px) {
   #product1 .pro {
@@ -874,6 +885,7 @@ img {
     margin-bottom: 20px;
   }
 }
+
 
 
 @media (max-width: 800px) {
@@ -1065,11 +1077,11 @@ font-size: large;
     margin-left:18% ;
   }
 }
-@media (max-width:370px){
+@media (max-width:470px){
   #video{
     text-align: center;
     width: 300px;
-    margin-left:10% ;
+    margin-left:19% ;
   }
 }
 
@@ -1293,3 +1305,146 @@ font-size: large;
     padding: 10px 20px 10px 20px ;
   }
 }
+/* =====================
+   CART SECTION
+===================== */
+#cart1 {
+  padding: 80px 6%;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* =====================
+   CART TABLE
+===================== */
+#cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* TABLE HEADER */
+#cart-table thead {
+  background: #f1f1f1;
+}
+
+#cart-table thead td {
+  padding: 18px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #333;
+  text-align: center;
+}
+
+/* TABLE BODY */
+#cart-table tbody td {
+  padding: 20px;
+  font-size: 15px;
+  color: #444;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+/* PRODUCT IMAGE */
+#cart-table img {
+  width: 70px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* REMOVE BUTTON */
+.cart-remove {
+  font-size: 18px;
+  color: #ff4d4d;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.cart-remove:hover {
+  color: #c40000;
+}
+
+/* QUANTITY INPUT */
+.cart-qty {
+  width: 65px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  text-align: center;
+  outline: none;
+}
+
+.cart-qty:focus {
+  border-color: #088178;
+}
+
+/* SUBTOTAL */
+.cart-subtotal {
+  font-weight: 600;
+  color: #088178;
+}
+
+/* =====================
+   TOTAL TEXT
+===================== */
+#cart1 h3 {
+  margin-top: 30px;
+  text-align: right;
+  font-size: 22px;
+  color: #222;
+}
+
+#cart-total {
+  color: #088178;
+  font-weight: 700;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+  #cart-table thead {
+    display: none;
+  }
+
+  #cart-table,
+  #cart-table tbody,
+  #cart-table tr,
+  #cart-table td {
+    display: block;
+    width: 100%;
+  }
+
+  #cart-table tr {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  }
+
+  #cart-table tbody td {
+    text-align: right;
+    padding: 12px 0;
+    border-bottom: none;
+  }
+
+  #cart-table tbody td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: 600;
+    color: #555;
+  }
+
+  #cart1 h3 {
+    text-align: center;
+  }
+}
+
+

@@ -2,31 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Commerce | Blog</title>
   <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body style="background-color: rgba(148, 152, 152, 0.389);">
+<body >
 
 <!-- HEADER (reuse your existing header) -->
-<section id="header">
+    <section id="header">
   <h1 id="logo" alt="">E-COMMERCE</h1>
-  <div id="mobile">
+    <div id="mobile">
   <i id="bar" class="fas fa-bars"></i>
 </div>
-   <ul id="navbar">
-   <a href="#"><i  class="fas fa-times" id="close" aria-hidden="true"></i></a>
-   <li><a class="" href="index.html">Home</a></li>
-   <li><a class="" href="shop.html">Shop</a></li>
-   <li><a class="active" href="blog.html">Blog</a></li>
-   <li><a class="" href="about.html">About</a></li>
-   <li><a class="" href="contact.html">Contack</a></li>
-   <li><a class="" href="cart.html"><i class="fa fa-shopping-bag shoppingbag"></i></a></li>
+ <div>   <ul id="navbar">
+    <i  class="fas fa-times" id="close" aria-hidden="true"></i>
+  <li><a href="index.html">Home</a>   </li>
+  <li><a href="shop.html">Shop</a></li>
+   <li><a  class="active" href="blog.html">Blog</a></li>
+   <li><a href="about.html">About</a></li>
+   <li><a href="contact.html">Contack</a></li>
+   <li><a Href="cart.html"><i class="fa fa-shopping-bag shoppingbag"></i></a></li>
  </ul>
-</section>
+  </div>
+  </section>
 
-<!-- BLOG HERO -->
+  <!-- BLOG HERO -->
 <section id="blog-hero">
   <div class="blog-hero-text">
     <h1>#Read-More</h1>
@@ -203,23 +205,6 @@
 
 </section>
 <script src="script.js"></script>
-  
-    <script>
-  document.querySelectorAll(".read-more").forEach(btn => {
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
 
-      const fullText = this.previousElementSibling;
-      fullText.style.display =
-        fullText.style.display === "block" ? "none" : "block";
-
-      this.innerText =
-        fullText.style.display === "block"
-          ? "READ LESS ←"
-          : "CONTINUE READING →";
-    });
-  });
-
-  </script>
 </body>
 </html>
