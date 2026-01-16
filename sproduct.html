@@ -36,37 +36,61 @@
     }
   </script>
         <div class="small-img-group">
-            <div class="small-img-col">
-                <img src="img/prod8.jpg" width="100%" class="small-img" alt="">
-            </div>
-             <div class="small-img-col">
-                <img src="img/prod9.jpg" width="100%" class="small-img" alt="">
-            </div>
-             <div class="small-img-col">
-                <img src="img/prod7.jpg" width="100%" class="small-img" alt="">
-            </div>
-             <div class="small-img-col">
-                <img src="img/prod10.jpg" width="100%" class="small-img" alt="">
-            </div>
-        </div>
+
+  <div class="small-img-col">
+    <img src="img/prod8.jpg"
+         class="small-img"
+         data-name="Men's Fashion T Shirt"
+         data-price="139"
+         data-desc="Premium cotton t-shirt with modern fit and soft fabric.">
+  </div>
+
+  <div class="small-img-col">
+    <img src="img/prod9.jpg"
+         class="small-img"
+         data-name="Men's Casual Wear"
+         data-price="149"
+         data-desc="Stylish casual wear made for daily comfort and durability.">
+  </div>
+
+  <div class="small-img-col">
+    <img src="img/prod7.jpg"
+         class="small-img"
+         data-name="Men's Street Style Tee"
+         data-price="129"
+         data-desc="Street-style t-shirt with breathable fabric and bold look.">
+  </div>
+
+  <div class="small-img-col">
+    <img src="img/prod10.jpg"
+         class="small-img"
+         data-name="Men's Premium Cotton Tee"
+         data-price="169"
+         data-desc="High-quality premium cotton t-shirt for all seasons.">
+  </div>
+
+</div>
+
     </div>
     <div class="single-pro-details">
-        <h4>Home / T-shirts</h4>
-        <h3>Men's Fashion T Shirts</h3>
-        <h1>$139.00</h1>
+        <h4>Home / shirts</h4>
+        <h3 id="product-name">Men's Fashion T Shirts</h3>
+        <h1 id="product-price">$139.00</h1>
         <select>
         <option>Select Size</option>
         <option>XL</option>
         <option>XXL</option>
         <option>Small</option>
         <option>Large</option>
-        </select>
+        </select> 
         <input type="number" value="1">
-        <button class="normal" data-name="Cartoon Astronaut T-Shirt"
+        <button class="normal" 
+         id="addToCartBtn"
+  data-name="Cartoon Astronaut T-Shirt"
   data-price="118.19"
-  data-image="pro1.jpg">Add To Cart</button>
+  >Add To Cart</button>
         <h3>Product Details</h3>
-        <span>The gilden Ultra cotton shirt is made from a substantial 6.0 oz.
+        <span id="product-desc">The gilden Ultra cotton shirt is made from a substantial 6.0 oz.
             per sp.yd. fabric constructed from 100% cotton, this classic fit preshrunk shirt
             knit provides unmatched comfort with each wear. Featuring a colored neck and shoulder, and a seemful
             double-needle collor, and available in a range of colors, it offer it all in 
@@ -102,8 +126,8 @@
         <a href="sproduct.html?img=img/prod2.jpg">
         <img src="img/prod2.jpg" alt=""></a>
         <div class="des">
-          <span>adidas</span>
-          <h5>Cartoon Astronaut T-Shirt</h5>
+          <span>puma</span>
+          <h5>Fabric</h5>
           <div class="star">
             <i class="fas fa-star "></i>
              <i class="fas fa-star"></i>
@@ -297,23 +321,121 @@
   </section>
 
   <script>
-var Main_Img=document.getElementById("mainimg");
-var small=document.getElementsByClassName("small-img")
 
- small[0].onclick = function(){
-  Main_Img.src = small[0].src;
- }
-  small[1].onclick = function(){
-  Main_Img.src = small[1].src;
- }
-  small[2].onclick = function(){
-  Main_Img.src = small[2].src;
- }
-  small[3].onclick = function(){
-  Main_Img.src = small[3].src;
- }
 
-  </script>
+
+
+  const mainImg = document.getElementById("mainimg");
+  const productName = document.getElementById("product-name");
+  const productPrice = document.getElementById("product-price");
+  const productDesc = document.getElementById("product-desc");
+
+  document.querySelectorAll(".small-img").forEach(img => {
+    img.addEventListener("click", () => {
+      mainImg.src = img.src;
+      productName.innerText = img.dataset.name;
+      productPrice.innerText = `$${img.dataset.price}`;
+      productDesc.innerText = img.dataset.desc;
+    });
+  });
+
+
+// var Main_Img=document.getElementById("mainimg");
+// var small=document.getElementsByClassName("small-img")
+
+//  small[0].onclick = function(){
+//   Main_Img.src = small[0].src;
+//  }
+//   small[1].onclick = function(){
+//   Main_Img.src = small[1].src;
+//  }
+//   small[2].onclick = function(){
+//   Main_Img.src = small[2].src;
+//  }
+//   small[3].onclick = function(){
+//   Main_Img.src = small[3].src;
+//  }
+
+  // const params = new URLSearchParams(window.location.search);
+
+//  const img = params.get("img");
+//   const name = params.get("name");
+//   const price = params.get("price");
+//   const rating = params.get("rating");
+//   const desc = params.get("desc");
+
+//   if (img) document.getElementById("mainimg").src = img;
+//   if (name) document.getElementById("product-name").innerText = name;
+//   if (price) document.getElementById("product-price").innerText = `$${price}`;
+//   if (desc) document.getElementById("product-desc").innerText = desc;
+
+
+
+
+  // document.getElementById("addToCartBtn").addEventListener("click", () => {
+  //   const name = document.getElementById("addToCartBtn").dataset.name;
+  //   const price = Number(document.getElementById("addToCartBtn").dataset.price);
+  //   const image = document.getElementById("mainimg").src;
+  //   const qty = document.querySelector(".single-pro-details input").value;
+
+  //   const product = {
+  //     name,
+  //     price,
+  //     image,
+  //     qty: Number(qty)
+  //   };
+
+  //   let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  //   cart.push(product);
+  //   localStorage.setItem("cart", JSON.stringify(cart));
+
+  //   alert("Product added to cart");
+  // });
+ 
+  document.getElementById("addToCartBtn").addEventListener("click", () => {
+
+    const name = document.querySelector(".single-pro-details h3").innerText;
+    const price = Number(
+      document.querySelector(".single-pro-details h1").innerText.replace("$", "")
+    );
+    const image = document.getElementById("mainimg").src;
+    const qty = Number(document.querySelector(".single-pro-details input").value);
+
+    const product = { name, price, image, qty };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Product added to cart");
+  });
+
+document.querySelectorAll(".small-img").forEach(img => {
+    img.addEventListener("click", () => {
+      document.getElementById("addToCartBtn").dataset.name = img.dataset.name;
+      document.getElementById("addToCartBtn").dataset.price = img.dataset.price;
+    });
+  });
+
+  // const params = new URLSearchParams(window.location.search);
+
+  const img = params.get("img");
+  const name = params.get("name");
+  const price = params.get("price");
+  const desc = params.get("desc");
+  const rating = params.get("rating");
+
+  if (img) document.getElementById("mainimg").src = img;
+  if (name) document.getElementById("product-name").innerText = name;
+  if (price) document.getElementById("product-price").innerText = `$${price}`;
+  if (desc) document.getElementById("product-desc").innerText = desc;
+
+  // OPTIONAL: dynamic stars (later upgrade)
+  console.log("Rating:", rating);
+</script>
+
+
+
   <script src="script.js"></script>
 </body>
 </html>
