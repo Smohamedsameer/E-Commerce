@@ -32,6 +32,7 @@
       <td>Remove</td>
       <td>Image</td>
       <td>Product</td>
+      <td>Size</td>
       <td>Price</td>
       <td>Qty</td>
       <td>Subtotal</td>
@@ -56,7 +57,7 @@ function renderCart() {
 
   cart.forEach((item, index) => {
     const price = Number(item.price);
-    const qty = Number(item.quantity);
+    const qty = Number(item.qty);
     const subtotal = price * qty;
     total += subtotal;
 
@@ -65,15 +66,19 @@ function renderCart() {
         <td>
           <button onclick="removeItem(${index})">❌</button>
         </td>
-        <td>
-          <img src="${item.image}" width="60">
-        </td>
-        <td>${item.name}</td>
+        <td><img src="${item.image}" width="60"></td>
+        <td>${item.name} </td>
+        <td>${item.size}</td>
         <td>$${price.toFixed(2)}</td>
         <td>
-          <input type="number" min="1" value="${qty}"
-            onchange="updateQty(${index}, this.value)">
-        </td>
+          <input 
+          type="number" 
+          min="1" 
+           value="${qty}"
+            onchange="updateQty(${index}, this.value)"
+    >
+  </td>
+
         <td>$${subtotal.toFixed(2)}</td>
       </tr>
     `;
@@ -88,11 +93,12 @@ function removeItem(index) {
   renderCart();
 }
 
-function updateQty(index, qty) {
-  cart[index].quantity = Number(qty);
+function updateQty(index, newQty) {
+  cart[index].qty = Number(newQty);   // ✅ update qty
   localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
+  renderCart();                       // ✅ re-render cart
 }
+
 
 renderCart();
 
