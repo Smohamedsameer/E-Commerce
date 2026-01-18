@@ -205,6 +205,27 @@
 
 </section>
 <script src="script.js"></script>
+<script>
+  document.querySelectorAll(".read-more").forEach(button => {
+  button.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const fullText = this.previousElementSibling;
+    const shortText = fullText.previousElementSibling;
+
+    if (fullText.style.display === "block") {
+      fullText.style.display = "none";
+      shortText.style.display = "block";
+      this.innerText = "CONTINUE READING →";
+    } else {
+      fullText.style.display = "block";
+      shortText.style.display = "none";
+      this.innerText = "READ LESS ←";
+    }
+  });
+});
+
+</script>
 
 </body>
 </html>

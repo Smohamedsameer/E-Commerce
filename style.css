@@ -46,6 +46,28 @@ body {
   top: 0;
   z-index: 100;
 }
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  width: 390px;
+}
+
+.search-box i {
+  color: #777;
+  margin-right: 8px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+}
+
 
 #logo {
   font-size: 28px;
@@ -68,6 +90,7 @@ body {
   color: #333;
   position: relative;
   transition: 0.3s ease;
+  cursor: pointer;
 }
 #navbar i:hover{
   color: #088178;
@@ -166,7 +189,7 @@ body {
 #feature .fe-box{
     width: 180px;
     text-align: center;
-    padding:25px 15 px ;
+    padding:25px 15px ;
 box-shadow: 20px 20px 34px rgba(0,0,0,0.03);
 border: 1px solid #cce7d0;
 margin: 15px 0;
@@ -521,7 +544,7 @@ footer a:hover{
 #pagination{
     text-align: center;
 }
-#pagination a{
+#pagination button{
     text-decoration: none;
     background-color:#088178;
     padding: 15px 20px;
