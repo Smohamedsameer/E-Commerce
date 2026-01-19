@@ -1417,16 +1417,84 @@ font-size: large;
 /* =====================
    TOTAL TEXT
 ===================== */
-#cart1 h3 {
+/* .total-box h3 {
   margin-top: 30px;
   text-align: right;
   font-size: 22px;
   color: #222;
-}
+} */
 
 #cart-total {
   color: #088178;
   font-weight: 700;
+}
+.checkout-box {
+  max-width: 100%;
+  margin-left: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.checkout-box h4 {
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #222;
+}
+
+.coupon-box, .payment-box {
+  margin-bottom: 20px;
+}
+
+.radio-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.radio-card:hover {
+  border-color: #088178;
+  background: #f6fffd;
+}
+
+.radio-card input {
+  accent-color: #088178;
+  transform: scale(1.2);
+}
+
+.radio-card span small {
+  display: block;
+  color: #777;
+  font-size: 13px;
+}
+
+.total-box {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.total-box p {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.discount {
+  color: #e63946;
+}
+
+.total-box h3 {
+  display: flex;
+  justify-content: space-between;
+  color: #088178;
+  font-size: 22px;
 }
 
 /* =====================
@@ -1469,6 +1537,83 @@ font-size: large;
   #cart1 h3 {
     text-align: center;
   }
+}
+.buy-btn {
+  width: 75%;
+  margin-left: 14%;
+  padding: 14px;
+  background: #088178;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buy-btn:hover {
+  background: #066b63;
+}
+/* =========================
+   CART TABLE – DESKTOP
+   ========================= */
+
+#cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+#cart-table thead {
+  background: #f8f8f8;
+}
+
+#cart-table thead td {
+  padding: 14px;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+#cart-table tbody td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+#cart-table img {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+#cart-table input[type="number"] {
+  width: 70px;
+  padding: 6px;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* REMOVE BUTTON – DESKTOP */
+#cart-table button {
+  background: #000000;
+  color: #fff;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left:90% ;              /* ✅ center */
+  transition: 0.2s ease;
+}
+
+#cart-table button:hover {
+  background: #d9363e;
+  transform: scale(1.05);
 }
 
 

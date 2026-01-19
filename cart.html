@@ -41,66 +41,243 @@
 
   <tbody id="cart-items"></tbody>
 </table>
-<h3>Total: <span id="cart-total">$0</span></h3>
+
+<div class="checkout-box">
+
+  <!-- Coupon Section -->
+  <div class="coupon-box">
+    <h4>Apply Coupon</h4>
+
+    <label class="radio-card">
+      <input type="checkbox" name="coupon" id="coupon50">
+      <span>
+        <strong>WELCOME50</strong>
+        <small>Save $50 on this order</small>
+      </span>
+    </label>
+  </div>
+
+  <!-- Payment Section -->
+  <div class="payment-box">
+    <h4>Payment Method</h4>
+
+    <label class="radio-card">
+      <input type="radio" name="payment" checked>
+      <span>💵 Cash on Delivery</span>
+    </label>
+
+    <label class="radio-card">
+      <input type="radio" name="payment">
+      <span>💳 Online Payment</span>
+    </label>
+  </div>
+
+  <!-- Total -->
+  <div class="total-box">
+  <p>Items Subtotal: <span id="itemsSubtotal">$0.00</span></p>
+  <p>Handling Fee: <span id="handlingFee">$10.00</span></p>
+  <p>Delivery Fee: <span id="deliveryFee">$10.00</span></p>
+  <hr>
+
+  <p>Subtotal (Before Discount): <span id="orderSubtotal">$0.00</span></p>
+  <p>TAX (GST): <span id="taxAmount">$0.00</span></p>
+  <p class="discount">Discount: <span id="discountAmount">-$0.00</span></p>
+  <hr>
+
+  <h3>Grand Total: <span id="cart-total">$0.00</span></h3>
+
+  <button class="buy-btn" onclick="placeOrder()">Buy Now</button>
+</div>
+
 </section>
 <script src="script.js"></script>
 
 <script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+/* ===============================
+   CONFIG
+================================ */
+const HANDLING_FEE = 10;
+const DELIVERY_FEE = 10;
+const TAX_RATE = 0.05;       // 5% GST
+const COUPON_DISCOUNT = 50;
+
+/* ===============================
+   DOM ELEMENTS
+================================ */
 const cartTable = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
+const coupon = document.getElementById("coupon50");
 
-function renderCart() {
+const itemsSubtotalEl = document.getElementById("itemsSubtotal");
+const orderSubtotalEl = document.getElementById("orderSubtotal");
+const taxAmountEl = document.getElementById("taxAmount");
+const discountEl = document.getElementById("discountAmount");
+const cartTotalEl = document.getElementById("cart-total");
+
+/* ===============================
+   LOAD CART
+================================ */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+/* ===============================
+   RENDER CART TABLE
+================================ */
+function renderCartTable() {
   cartTable.innerHTML = "";
-  let total = 0;
 
   cart.forEach((item, index) => {
     const price = Number(item.price);
     const qty = Number(item.qty);
     const subtotal = price * qty;
-    total += subtotal;
 
     cartTable.innerHTML += `
       <tr>
         <td>
           <button onclick="removeItem(${index})">❌</button>
         </td>
-        <td><img src="${item.image}" width="60"></td>
-        <td>${item.name} </td>
+        <td>
+          <img src="${item.image}" width="60">
+        </td>
+        <td>${item.name}</td>
         <td>${item.size}</td>
         <td>$${price.toFixed(2)}</td>
         <td>
           <input 
-          type="number" 
-          min="1" 
-           value="${qty}"
+            type="number"
+            min="1"
+            value="${qty}"
             onchange="updateQty(${index}, this.value)"
-    >
-  </td>
-
+          >
+        </td>
         <td>$${subtotal.toFixed(2)}</td>
       </tr>
     `;
   });
-
-  cartTotal.innerText = `$${total.toFixed(2)}`;
 }
 
+/* ===============================
+   TOTAL CALCULATION
+================================ */
+function calculateTotals() {
+  let itemsSubtotal = 0;
+
+  cart.forEach(item => {
+    itemsSubtotal += item.price * item.qty;
+  });
+
+  // Items subtotal
+  itemsSubtotalEl.innerText = `$${itemsSubtotal.toFixed(2)}`;
+
+  // Subtotal before discount
+  const subtotal = itemsSubtotal + HANDLING_FEE + DELIVERY_FEE;
+  orderSubtotalEl.innerText = `$${subtotal.toFixed(2)}`;
+
+  // Tax
+  const tax = subtotal * TAX_RATE;
+  taxAmountEl.innerText = `$${tax.toFixed(2)}`;
+
+  // Discount
+  const discount = coupon.checked ? COUPON_DISCOUNT : 0;
+  discountEl.innerText = `-$${discount.toFixed(2)}`;
+
+  // Grand total
+  let grandTotal = subtotal + tax - discount;
+  if (grandTotal < 0) grandTotal = 0;
+
+  cartTotalEl.innerText = `$${grandTotal.toFixed(2)}`;
+}
+
+/* ===============================
+   UPDATE QTY
+================================ */
+function updateQty(index, newQty) {
+  cart[index].qty = Number(newQty);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+/* ===============================
+   REMOVE ITEM
+================================ */
 function removeItem(index) {
   cart.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
 
-function updateQty(index, newQty) {
-  cart[index].qty = Number(newQty);   // ✅ update qty
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();                       // ✅ re-render cart
+/* ===============================
+   RENDER EVERYTHING
+================================ */
+function renderCart() {
+  renderCartTable();
+  calculateTotals();
 }
 
+/* ===============================
+   EVENTS
+================================ */
+coupon.addEventListener("change", renderCart);
 
+/* ===============================
+   INIT
+================================ */
 renderCart();
+
+
+function placeOrder() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  const paymentMethod = document.querySelector(
+    'input[name="payment"]:checked'
+  ).value;
+
+  const grandTotal = document.getElementById("cart-total").innerText;
+
+  if (paymentMethod === "cod") {
+    handleCOD(grandTotal);
+  } else {
+    handleOnlinePayment(grandTotal);
+  }
+}
+
+/* ===============================
+   CASH ON DELIVERY
+================================ */
+function handleCOD(amount) {
+  alert(`✅ Order placed successfully!\nPayment Mode: Cash on Delivery\nAmount: ${amount}`);
+
+  localStorage.removeItem("cart");
+  window.location.href = "success.html"; // optional
+}
+
+/* ===============================
+   ONLINE PAYMENT (DEMO)
+================================ */
+function handleOnlinePayment(amount) {
+  // STEP 1: Confirm
+  const confirmPay = confirm(
+    `You will be redirected for online payment.\nAmount: ${amount}`
+  );
+
+  if (!confirmPay) return;
+
+  // STEP 2: Simulate gateway delay
+  setTimeout(() => {
+    alert(`💳 Payment Successful!\nPaid Amount: ${amount}`);
+
+    // STEP 3: Clear cart
+    localStorage.removeItem("cart");
+
+    // STEP 4: Redirect
+    window.location.href = "success.html"; // optional
+  }, 1500);
+}
+
 
 
 </script>
