@@ -49,15 +49,17 @@ body {
 .search-box {
   display: flex;
   align-items: center;
-  background: #ffffff;
+  background: #76767675;
   padding: 8px 16px;
   border-radius: 30px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   width: 390px;
+  justify-content: center;
+  margin-left: 33%;
 }
 
 .search-box i {
-  color: #777;
+  color: #ffffff;
   margin-right: 8px;
 }
 
@@ -66,8 +68,27 @@ body {
   outline: none;
   font-size: 14px;
   width: 100%;
+  background: #00000000;
+  color: white;
+}
+@media (max-width:786px) {
+  .search-box {
+    margin-left: 22%;
+  }
 }
 
+@media (max-width:550px) {
+  .search-box {
+    margin-left: 12%;
+  }
+}
+
+@media (max-width:485px) {
+  .search-box {
+    margin-left: 6%;
+    width:315px ;
+  }
+}
 
 #logo {
   font-size: 28px;
