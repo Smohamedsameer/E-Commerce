@@ -41,6 +41,7 @@ button.white{
   position: absolute;
   top: 0;
   z-index: 10;
+  -webkit-text-stroke: 0.2px black;
 }
 
 #logo {
@@ -94,6 +95,7 @@ button.white{
     ),
     url("img/about.png") center/cover no-repeat;
   display: flex;
+  gap: 20px;
   align-items: center;
   padding-left: 80px;
 }
@@ -184,14 +186,51 @@ button.white{
   .search-box {
     margin-left: 22%;
   }
+  #hero{
+    background-size: 50vh;
+    background-position: center;
+    background-size: cover;
+  }
+  .hero-content{
+    margin-top: 200px;
+    margin-bottom: 200px;
+  }
+
+.hero-content h2 {
+margin-top: 5px;
+font-weight: bolder;
+}
+
+.hero-content p {
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
 }
 
 @media (max-width:550px) {
   .search-box {
     margin-left: 12%;
   }
+  #hero{
+    background-size: 50vh;
+    background-position: center;
+    background-size: cover;
+  }
+  .hero-content{
+    margin-top: 200px;
+    margin-bottom: 200px;
+  }
+
+.hero-content h2 {
+margin-top: 5px;
+font-weight: bolder;
 }
 
+.hero-content p {
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+}
 @media (max-width:485px) {
   .search-box {
     margin-left: 6%;
@@ -650,7 +689,7 @@ footer a:hover{
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    background-image: url(img/about.png);
+    background-image: url(img/banner2.jpg);
     backdrop-filter:blur(50%);
     background-size: cover;
     background-repeat: no-repeat;
@@ -1015,7 +1054,7 @@ img {
     right: -260px;
     width: 250px;
     height: 100vh;
-    background: #fff;
+    background: #000000;
     box-shadow: -10px 0 30px rgba(0,0,0,0.1);
     flex-direction: column;
     align-items: flex-start;
@@ -1573,6 +1612,7 @@ margin-top: 15px;
   margin-bottom: 12px;
   font-size: 18px;
   color: #222;
+  
 }
 
 .coupon-box, .payment-box {
